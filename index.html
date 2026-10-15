@@ -16,6 +16,8 @@
       --card-bg: rgba(16, 24, 48, 0.75);
       --neon-cyan: #00f3ff;
       --neon-pink: #ff007f;
+      --zalo-blue: #0088ff;
+      --fb-blue: #1877f2;
     }
 
     * {
@@ -116,6 +118,7 @@
       width: 100%;
       max-width: 1200px;
       perspective: 1000px;
+      margin-bottom: 60px;
     }
 
     .card-3d {
@@ -207,6 +210,127 @@
       transform: scale(1.05);
     }
 
+    /* --- SECTION LIÊN HỆ HỖ TRỢ NHANH --- */
+    .contact-section {
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .contact-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 15px var(--neon-cyan);
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .phone-wiggle {
+      font-size: 2.5rem;
+      color: var(--gold-primary);
+      filter: drop-shadow(0 0 10px var(--gold-primary));
+      animation: phoneRing 1.2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: rgba(10, 18, 38, 0.85);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid transparent;
+    }
+
+    /* Zalo Card Style */
+    .contact-card.zalo {
+      border-color: rgba(0, 136, 255, 0.4);
+    }
+    .contact-card.zalo:hover {
+      border-color: var(--zalo-blue);
+      box-shadow: 0 15px 35px rgba(0, 136, 255, 0.4);
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    /* Facebook Card Style */
+    .contact-card.facebook {
+      border-color: rgba(24, 119, 242, 0.4);
+    }
+    .contact-card.facebook:hover {
+      border-color: var(--fb-blue);
+      box-shadow: 0 15px 35px rgba(24, 119, 242, 0.4);
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .contact-icon-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .zalo .contact-icon-box {
+      background: linear-gradient(135deg, #0088ff, #0055ff);
+      box-shadow: 0 0 20px rgba(0, 136, 255, 0.6);
+    }
+
+    .facebook .contact-icon-box {
+      background: linear-gradient(135deg, #1877f2, #0052cc);
+      box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
+    }
+
+    .contact-info {
+      text-align: left;
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      color: #a0aec0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 4px 0;
+    }
+
+    .contact-detail {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
+
     /* ANIMATIONS */
     @keyframes floatCrown {
       0% { transform: translateY(0) rotate(0deg); }
@@ -218,10 +342,22 @@
       100% { filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.9)); }
     }
 
+    @keyframes phoneRing {
+      0% { transform: rotate(0) scale(1); }
+      10% { transform: rotate(15deg) scale(1.1); }
+      20% { transform: rotate(-15deg) scale(1.1); }
+      30% { transform: rotate(15deg) scale(1.1); }
+      40% { transform: rotate(-15deg) scale(1.1); }
+      50% { transform: rotate(0) scale(1); }
+      100% { transform: rotate(0) scale(1); }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .main-title { font-size: 2.2rem; }
       .vip-crown { font-size: 2.2rem; }
+      .contact-title { font-size: 1.5rem; }
+      .contact-card { padding: 20px; }
     }
   </style>
 </head>
@@ -229,9 +365,9 @@
 
   <div class="bg-grid"></div>
 
-  <!-- HEADER HEADER SYSTEM -->
+  <!-- HEADER SYSTEM -->
   <header class="header-container">
-    <div class="vip-crown"><i class="fa-solid => fa-crown"></i></div>
+    <div class="vip-crown"><i class="fa-solid fa-crown"></i></div>
     <div><span class="vip-badge">VIP EXPERIENCE 3D</span></div>
     <h1 class="main-title">THANH HOÀI<br>SOCIAL MEDIA</h1>
     <p class="sub-title"><i class="fa-solid fa-bolt"></i> Hệ Thống Dịch Vụ Mạng Xã Hội Cao Cấp <i class="fa-solid fa-bolt"></i></p>
@@ -245,7 +381,7 @@
       <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
       <h3 class="card-title">TĂNG FOLLOW</h3>
       <p class="card-desc">Tăng lượng người theo dõi chuẩn Nick Thật, bảo hành lâu dài, tốc độ siêu tốc.</p>
-      <a href="#" class="btn-action">Sử Dụng ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
     <!-- Card 2 -->
@@ -253,7 +389,7 @@
       <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
       <h3 class="card-title">TĂNG LIKE / THẢ TIM</h3>
       <p class="card-desc">Tăng lượt tương tác bài viết, ảnh, video trên Facebook, TikTok, Instagram.</p>
-      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
     <!-- Card 3 -->
@@ -261,7 +397,7 @@
       <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
       <h3 class="card-title">LƯỢT XEM / VIEW</h3>
       <p class="card-desc">Tăng view Video, Story, Livestream đa nền tảng tức thì.</p>
-      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
     <!-- Card 4 -->
@@ -269,7 +405,7 @@
       <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
       <h3 class="card-title">BÌNH LUẬN SEEDING</h3>
       <p class="card-desc">Tăng comment theo nội dung tùy chỉnh, tăng uy tín bán hàng vượt trội.</p>
-      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
     <!-- Card 5 -->
@@ -277,7 +413,7 @@
       <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
       <h3 class="card-title">TĂNG SHARE / CHIA SẺ</h3>
       <p class="card-desc">Chia sẻ bài viết vào hội nhóm, cá nhân giúp bài viết dễ lên xu hướng.</p>
-      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
     <!-- Card 6 -->
@@ -285,10 +421,44 @@
       <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
       <h3 class="card-title">DỊCH VỤ TÀI KHOẢN VIP</h3>
       <p class="card-desc">Cung cấp tài khoản Clone, Via, Page Green tích xanh giá tốt nhất thị trường.</p>
-      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
     </div>
 
   </main>
+
+  <!-- SECTION LIÊN HỆ HỖ TRỢ NHANH -->
+  <section class="contact-section">
+    <h2 class="contact-title">
+      <span class="phone-wiggle"><i class="fa-solid fa-phone-volume"></i></span> 
+      LIÊN HỆ HỖ TRỢ NHANH
+    </h2>
+
+    <div class="contact-grid">
+      <!-- Ô Zalo -->
+      <a href="https://zalo.me/07037949990" target="_blank" class="contact-card zalo">
+        <div class="contact-icon-box">
+          <i class="fa-solid fa-comment-dots"></i>
+        </div>
+        <div class="contact-info">
+          <div class="contact-label">Hỗ Trợ Quản Lý Zalo</div>
+          <div class="contact-name">Nguyễn Thanh Hoài</div>
+          <div class="contact-detail">0703 794 9990</div>
+        </div>
+      </a>
+
+      <!-- Ô Facebook -->
+      <a href="https://www.facebook.com" target="_blank" class="contact-card facebook">
+        <div class="contact-icon-box">
+          <i class="fa-brands fa-facebook-f"></i>
+        </div>
+        <div class="contact-info">
+          <div class="contact-label">Facebook Chính Thức</div>
+          <div class="contact-name">Nguyễn Thanh Hoài</div>
+          <div class="contact-detail">Chát Trực Tiếp 24/7</div>
+        </div>
+      </a>
+    </div>
+  </section>
 
 </body>
 </html>
