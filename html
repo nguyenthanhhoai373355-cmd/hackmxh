@@ -1,1 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THANH HOÀI SOCIAL MEDIA - VIP SYSTEM</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --gold-primary: #ffd700;
+      --gold-secondary: #ffaa00;
+      --bg-dark: #080b14;
+      --card-bg: rgba(16, 24, 48, 0.75);
+      --neon-cyan: #00f3ff;
+      --neon-pink: #ff007f;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.15), transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(0, 243, 255, 0.1), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 127, 0.1), transparent 30%);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* BACKGROUND GRID ANIMATION */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      opacity: 0.25;
+    }
+
+    /* --- HEADER & VIP TITLE --- */
+    .header-container {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .vip-crown {
+      font-size: 3rem;
+      color: var(--gold-primary);
+      text-shadow: 0 0 20px var(--gold-primary), 0 0 40px var(--gold-secondary);
+      animation: floatCrown 3s ease-in-out infinite alternate;
+      margin-bottom: -10px;
+    }
+
+    .vip-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      padding: 4px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      box-shadow: 0 0 15px var(--gold-primary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #ff8c00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+      position: relative;
+      transform: rotateX(10deg);
+      filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+      animation: glowPulse 2.5s ease-in-out infinite alternate;
+    }
+
+    .sub-title {
+      font-size: 1.2rem;
+      color: var(--neon-cyan);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    /* --- MENU GRID 3D --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+      perspective: 1000px;
+    }
+
+    .card-3d {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 215, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .card-3d::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .card-3d:hover {
+      transform: translateY(-10px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+      border-color: var(--gold-primary);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .card-3d:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff, var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px var(--gold-primary));
+      transition: transform 0.4s;
+    }
+
+    .card-3d:hover .card-icon {
+      transform: translateZ(30px) scale(1.15);
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #a0aec0;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .btn-action {
+      display: inline-block;
+      width: 80%;
+      padding: 12px 0;
+      background: linear-gradient(90deg, var(--gold-secondary), var(--gold-primary));
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      border: none;
+      border-radius: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: #fff;
+      box-shadow: 0 0 25px var(--gold-primary);
+      transform: scale(1.05);
+    }
+
+    /* ANIMATIONS */
+    @keyframes floatCrown {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(5deg); }
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+      100% { filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.9)); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .main-title { font-size: 2.2rem; }
+      .vip-crown { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <!-- HEADER HEADER SYSTEM -->
+  <header class="header-container">
+    <div class="vip-crown"><i class="fa-solid => fa-crown"></i></div>
+    <div><span class="vip-badge">VIP EXPERIENCE 3D</span></div>
+    <h1 class="main-title">THANH HOÀI<br>SOCIAL MEDIA</h1>
+    <p class="sub-title"><i class="fa-solid fa-bolt"></i> Hệ Thống Dịch Vụ Mạng Xã Hội Cao Cấp <i class="fa-solid fa-bolt"></i></p>
+  </header>
+
+  <!-- MENU DỊCH VỤ 3D -->
+  <main class="services-grid">
+
+    <!-- Card 1 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+      <h3 class="card-title">TĂNG FOLLOW</h3>
+      <p class="card-desc">Tăng lượng người theo dõi chuẩn Nick Thật, bảo hành lâu dài, tốc độ siêu tốc.</p>
+      <a href="#" class="btn-action">Sử Dụng ngay</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+      <h3 class="card-title">TĂNG LIKE / THẢ TIM</h3>
+      <p class="card-desc">Tăng lượt tương tác bài viết, ảnh, video trên Facebook, TikTok, Instagram.</p>
+      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+      <h3 class="card-title">LƯỢT XEM / VIEW</h3>
+      <p class="card-desc">Tăng view Video, Story, Livestream đa nền tảng tức thì.</p>
+      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+      <h3 class="card-title">BÌNH LUẬN SEEDING</h3>
+      <p class="card-desc">Tăng comment theo nội dung tùy chỉnh, tăng uy tín bán hàng vượt trội.</p>
+      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
+      <h3 class="card-title">TĂNG SHARE / CHIA SẺ</h3>
+      <p class="card-desc">Chia sẻ bài viết vào hội nhóm, cá nhân giúp bài viết dễ lên xu hướng.</p>
+      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card-3d">
+      <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3 class="card-title">DỊCH VỤ TÀI KHOẢN VIP</h3>
+      <p class="card-desc">Cung cấp tài khoản Clone, Via, Page Green tích xanh giá tốt nhất thị trường.</p>
+      <a href="#" class="btn-action">Sử Dụng Ngay</a>
+    </div>
+
+  </main>
+
+</body>
+</html>
