@@ -57,7 +57,7 @@
     /* --- HEADER & VIP TITLE --- */
     .header-container {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       position: relative;
       perspective: 1000px;
     }
@@ -110,15 +110,53 @@
       text-shadow: 0 0 10px var(--neon-cyan);
     }
 
+    /* --- SECTION SEPARATORS --- */
+    .section-container {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, currentColor, transparent);
+    }
+
+    .section-title.facebook {
+      color: var(--fb-blue);
+      text-shadow: 0 0 15px rgba(24, 119, 242, 0.6);
+    }
+
+    .section-title.tiktok {
+      color: var(--neon-pink);
+      text-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+    }
+
     /* --- MENU GRID 3D --- */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      width: 100%;
-      max-width: 1200px;
       perspective: 1000px;
-      margin-bottom: 60px;
     }
 
     .card-3d {
@@ -173,7 +211,7 @@
 
     .card-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 10px;
@@ -214,7 +252,7 @@
     .contact-section {
       width: 100%;
       max-width: 1000px;
-      margin-top: 20px;
+      margin-top: 10px;
       text-align: center;
       perspective: 1000px;
     }
@@ -356,6 +394,7 @@
     @media (max-width: 768px) {
       .main-title { font-size: 2.2rem; }
       .vip-crown { font-size: 2.2rem; }
+      .section-title { font-size: 1.5rem; }
       .contact-title { font-size: 1.5rem; }
       .contact-card { padding: 20px; }
     }
@@ -373,58 +412,69 @@
     <p class="sub-title"><i class="fa-solid fa-bolt"></i> Hệ Thống Dịch Vụ Mạng Xã Hội Cao Cấp <i class="fa-solid fa-bolt"></i></p>
   </header>
 
-  <!-- MENU DỊCH VỤ 3D -->
-  <main class="services-grid">
+  <!-- MỤC 1: DỊCH VỤ FACEBOOK -->
+  <section class="section-container">
+    <h2 class="section-title facebook">
+      <i class="fa-brands fa-facebook"></i> Dịch Vụ Facebook
+    </h2>
+    <div class="services-grid">
+      <!-- FB Card 1 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+        <h3 class="card-title">TĂNG FOLLOW FB</h3>
+        <p class="card-desc">Tăng người theo dõi trang cá nhân & Fanpage chuẩn Nick Thật, bảo hành lâu dài.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
 
-    <!-- Card 1 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
-      <h3 class="card-title">TĂNG FOLLOW</h3>
-      <p class="card-desc">Tăng lượng người theo dõi chuẩn Nick Thật, bảo hành lâu dài, tốc độ siêu tốc.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      <!-- FB Card 2 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+        <h3 class="card-title">TĂNG LIKE BÀI VIẾT</h3>
+        <p class="card-desc">Tăng lượt Like, thả tim tương tác cho bài viết, ảnh, album trên Facebook.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
+
+      <!-- FB Card 3 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
+        <h3 class="card-title">SHARE & SEEDING FB</h3>
+        <p class="card-desc">Tăng lượt chia sẻ bài viết vào nhóm và bình luận seeding tùy chỉnh uy tín.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Card 2 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
-      <h3 class="card-title">TĂNG LIKE / THẢ TIM</h3>
-      <p class="card-desc">Tăng lượt tương tác bài viết, ảnh, video trên Facebook, TikTok, Instagram.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+  <!-- MỤC 2: DỊCH VỤ TIKTOK -->
+  <section class="section-container">
+    <h2 class="section-title tiktok">
+      <i class="fa-brands fa-tiktok"></i> Dịch Vụ TikTok
+    </h2>
+    <div class="services-grid">
+      <!-- TikTok Card 1 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+        <h3 class="card-title">TĂNG FOLLOW TIKTOK</h3>
+        <p class="card-desc">Tăng lượng Follower kênh TikTok nhanh chóng, hỗ trợ mở tính năng Livestream.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
+
+      <!-- TikTok Card 2 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+        <h3 class="card-title">TĂNG TIM TIKTOK</h3>
+        <p class="card-desc">Tăng tim video TikTok giúp đẩy bài viết lên đề xuất xu hướng cực mạnh.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
+
+      <!-- TikTok Card 3 -->
+      <div class="card-3d">
+        <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+        <h3 class="card-title">TĂNG VIEW VIDEO</h3>
+        <p class="card-desc">Tăng triệu view Video TikTok siêu tốc, độ uy tín và tương tác cao.</p>
+        <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
+      </div>
     </div>
-
-    <!-- Card 3 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
-      <h3 class="card-title">LƯỢT XEM / VIEW</h3>
-      <p class="card-desc">Tăng view Video, Story, Livestream đa nền tảng tức thì.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
-      <h3 class="card-title">BÌNH LUẬN SEEDING</h3>
-      <p class="card-desc">Tăng comment theo nội dung tùy chỉnh, tăng uy tín bán hàng vượt trội.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
-      <h3 class="card-title">TĂNG SHARE / CHIA SẺ</h3>
-      <p class="card-desc">Chia sẻ bài viết vào hội nhóm, cá nhân giúp bài viết dễ lên xu hướng.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="card-3d">
-      <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-      <h3 class="card-title">DỊCH VỤ TÀI KHOẢN VIP</h3>
-      <p class="card-desc">Cung cấp tài khoản Clone, Via, Page Green tích xanh giá tốt nhất thị trường.</p>
-      <a href="https://zalo.me/07037949990" target="_blank" class="btn-action">Sử Dụng Ngay</a>
-    </div>
-
-  </main>
+  </section>
 
   <!-- SECTION LIÊN HỆ HỖ TRỢ NHANH -->
   <section class="contact-section">
@@ -442,7 +492,7 @@
         <div class="contact-info">
           <div class="contact-label">Hỗ Trợ Quản Lý Zalo</div>
           <div class="contact-name">Nguyễn Thanh Hoài</div>
-          <div class="contact-detail">0703 794 990</div>
+          <div class="contact-detail">0703 794 9990</div>
         </div>
       </a>
 
